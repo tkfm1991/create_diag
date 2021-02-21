@@ -7,11 +7,11 @@ function init(){
 function line_hover(){
     $(".line").hover(
         function() {
-            document.getElementById("area1").innerText = $(this).attr("id");
+            document.getElementById("hover_line").innerText = $(this).attr("id");
             console.log('in');
         },
         function() {
-            document.getElementById("area1").innerText = 'default message';
+            document.getElementById("hover_line").innerText = 'default message';
             console.log("out");
         }
     )    
