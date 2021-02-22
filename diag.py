@@ -14,8 +14,12 @@ def target_list(target):
     with open('static/resource/diag.csv', 'r') as f:
         reader = csv.reader(f)
         for row in reader:
-            if target in row[0]:
-                neighbor_list.append(row)
+            try:
+                if target in row[0]:
+                    neighbor_list.append(row)
+            except IndexError:
+                # 形式エラー
+                continue
         neighbor_list.sort()
 
     return neighbor_list
