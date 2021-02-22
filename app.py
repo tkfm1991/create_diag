@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request
-import csv
 import diag as cdiag
 
 
 app = Flask(__name__)
 resource_dir = 'static/resource'
+print('Hello')
 
 
 @app.route('/')
@@ -27,21 +27,12 @@ def get_diag():
     except Exception as e:
         return str(e)
 
-    # with open(f'{resource_dir}/diag.csv') as f:
-    #     reader = csv.reader(f)
-    #     for row in reader:
-    #         print(row)
-
     cdiag.target_list(target)
     neighbor_list = cdiag.target_list(target)
-    diag_list = cdiag.create_cli_diag(neighbor_list)
+    # diag_list = cdiag.create_cli_diag(neighbor_list)
     # cdiag.show_cli_diag(diag_list)
 
-
-    return render_template('diag.html')
-
-
-
+    return render_template('diag.html', neighbor_list=neighbor_list)
 
 
 # @app.route('/call_cli')
@@ -65,6 +56,7 @@ def get_diag():
 #    return render_template(url_for('top'))
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    print('World')
     app.run(debug=True)
     # app.run(host='0.0.0.0')
